@@ -491,10 +491,10 @@ input.form-input:focus,select.form-input:focus{outline:none;border-color:var(--g
 <div class="section" id="sec-config">
   <div class="hero">
     <div class="hero-title">Sincronización</div>
-    <div class="hero-sub">Conecta el registro, agua y lista a tu backend para verlos desde cualquier dispositivo</div>
+    <div class="hero-sub">Registro, agua y lista ya sincronizan automáticamente entre tus dispositivos</div>
   </div>
   <div class="api-key-block">
-    <p>Ingresa la URL de tu backend en Railway y el token de acceso (el mismo <code>API_TOKEN</code> configurado en el servidor).</p>
+    <p>Este sitio viene preconfigurado con tu backend en Railway — no necesitas hacer nada. Usa los campos de abajo solo si quieres apuntar a otro servidor (ej. uno local para pruebas).</p>
     <div class="form-group" style="margin-bottom:10px">
       <span class="form-label">URL del backend</span>
       <input class="form-input" id="cfg-url" type="text" placeholder="https://tu-app.up.railway.app">
@@ -524,8 +524,10 @@ function showSection(id, el){
 /* ══════════════════════════════════════
    BACKEND SYNC (config + fetch helper)
 ══════════════════════════════════════ */
-function getApiBase(){return (localStorage.getItem('api_base')||'').replace(/\/$/,'')}
-function getApiToken(){return localStorage.getItem('api_token')||''}
+const DEFAULT_API_BASE='https://nutricion-backend-production-72b5.up.railway.app';
+const DEFAULT_API_TOKEN='s6PhHnFGHyDkxrprm6mQICnkrjHB4k2C7C5JmJIQIuQ';
+function getApiBase(){return (localStorage.getItem('api_base')||DEFAULT_API_BASE).replace(/\/$/,'')}
+function getApiToken(){return localStorage.getItem('api_token')||DEFAULT_API_TOKEN}
 function isConfigured(){return !!(getApiBase()&&getApiToken())}
 
 async function apiFetch(path,opts={}){
@@ -572,9 +574,11 @@ function saveConfig(){
 }
 
 function loadConfigInputs(){
-  const url=getApiBase(), token=getApiToken();
-  if(url) document.getElementById('cfg-url').value=url;
-  if(token) document.getElementById('cfg-token').value='••••••••••••••••';
+  document.getElementById('cfg-url').value=getApiBase();
+  document.getElementById('cfg-token').value='••••••••••••••••';
+  const status=document.getElementById('cfg-status');
+  status.textContent='✓ Conectado (configuración incluida por defecto)';
+  status.style.color='var(--green)';
 }
 
 function initSyncedSections(){
