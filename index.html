@@ -752,14 +752,14 @@ async function renderMenu(){
               <span class="pill c">C ${m.c}</span>
               <span class="pill g">G ${m.g}</span>
             </div>
-            ${mealStatusHTML(di,mi,m)}
+            ${di===todayIdx?mealStatusHTML(di,mi,m):''}
           </div>
         </div>`).join('')}
     </div>`).join('');
 }
 
 function showDay(n){
-  document.querySelectorAll('[id^="day-"]').forEach((d,i)=>d.style.display=i===n?'block':'none');
+  document.querySelectorAll('#days-container [id^="day-"]').forEach((d,i)=>d.style.display=i===n?'block':'none');
   document.querySelectorAll('#day-tabs .tab').forEach((t,i)=>t.classList.toggle('active',i===n));
 }
 
