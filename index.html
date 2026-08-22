@@ -128,6 +128,21 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,14,12,.95);backdrop-fil
 .notif-btn{width:100%;margin-top:10px;padding:10px;border-radius:var(--r);border:1px dashed var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-size:12px;transition:all .15s}
 .notif-btn:hover{border-color:var(--blue);color:var(--blue)}
 
+/* ═══ MEAL STATUS (menú → registro rápido) ═══ */
+.meal-status{margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.meal-status.done{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ms-check{width:18px;height:18px;border-radius:50%;background:var(--green2);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ms-text{font-size:12px;color:var(--muted);flex:1;min-width:120px}
+.ms-actions{display:flex;gap:8px;flex-wrap:wrap}
+.ms-actions .btn{flex:1;min-width:120px}
+.replace-panel{margin-top:10px;padding:12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r)}
+.replace-tabs{display:flex;gap:6px;margin-bottom:10px}
+.btn.small{padding:5px 10px;font-size:11px}
+.btn.small.active{background:var(--green-bg);border-color:var(--green2);color:var(--green)}
+.replace-panel textarea{background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:12.5px;padding:8px 10px;font-family:'Inter',sans-serif;width:100%;min-height:60px;resize:vertical;margin-bottom:10px}
+.replace-panel input[type=file]{font-size:11.5px;color:var(--muted);margin-bottom:10px;width:100%}
+.ms-replace-status{font-size:11px;margin-top:8px;color:var(--muted)}
+
 /* ═══ TRACKING ═══ */
 .track-date{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
 .track-date-label{font-size:15px;font-weight:500}
@@ -149,15 +164,21 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,14,12,.95);backdrop-fil
 input.form-input,select.form-input{background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:12.5px;padding:7px 10px;font-family:'Inter',sans-serif;width:100%;transition:border .15s}
 input.form-input:focus,select.form-input:focus{outline:none;border-color:var(--green2)}
 .food-log{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.food-log-hdr{display:grid;grid-template-columns:1fr 70px 70px 70px 70px 32px;padding:8px 14px;border-bottom:1px solid var(--border);background:var(--bg2)}
+.food-log-hdr{display:grid;grid-template-columns:1fr 70px 70px 70px 70px 56px;padding:8px 14px;border-bottom:1px solid var(--border);background:var(--bg2)}
 .food-log-hdr span{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);text-align:right}
 .food-log-hdr span:first-child{text-align:left}
-.food-log-item{display:grid;grid-template-columns:1fr 70px 70px 70px 70px 32px;padding:9px 14px;border-bottom:1px solid var(--border);align-items:center;font-size:12.5px}
+.food-log-item{display:grid;grid-template-columns:1fr 70px 70px 70px 70px 56px;padding:9px 14px;border-bottom:1px solid var(--border);align-items:center;font-size:12.5px}
 .food-log-item:last-child{border-bottom:none}
 .food-log-item .fi-name{color:var(--text)}
 .food-log-item .fi-val{text-align:right;color:var(--muted)}
-.food-log-item .fi-del{text-align:right;cursor:pointer;color:var(--faint);font-size:16px;transition:color .15s}
+.food-log-item .fi-actions{display:flex;gap:6px;justify-content:flex-end}
+.food-log-item .fi-edit,.food-log-item .fi-del{cursor:pointer;color:var(--faint);font-size:14px;transition:color .15s}
+.food-log-item .fi-edit:hover{color:var(--blue)}
 .food-log-item .fi-del:hover{color:var(--coral)}
+.food-log-item.editing{grid-template-columns:1fr;gap:8px;background:var(--bg2)}
+.fi-edit-row{display:grid;grid-template-columns:1fr 90px 60px 60px 60px 60px;gap:6px;align-items:center}
+.fi-edit-row input,.fi-edit-row select{background:var(--bg3);border:1px solid var(--border2);border-radius:6px;color:var(--text);font-size:12px;padding:6px 8px;font-family:'Inter',sans-serif;width:100%}
+.fi-edit-actions{display:flex;gap:8px;justify-content:flex-end}
 .food-log-empty{padding:2rem;text-align:center;color:var(--faint);font-size:13px}
 .comida-tag{font-size:10px;padding:2px 7px;border-radius:4px;font-weight:500;margin-left:6px}
 .comida-tag.des{background:#2A1F0A;color:#C8943A}
@@ -197,7 +218,8 @@ input.form-input:focus,select.form-input:focus{outline:none;border-color:var(--g
   .macro-bar,.track-macros{grid-template-columns:repeat(2,1fr)}
   .two-col{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr 1fr;row-gap:8px}
-  .food-log-hdr,.food-log-item{grid-template-columns:1fr 60px 32px}
+  .food-log-hdr,.food-log-item{grid-template-columns:1fr 60px 56px}
+  .fi-edit-row{grid-template-columns:1fr 1fr;row-gap:6px}
   .food-log-hdr span:nth-child(2),.food-log-hdr span:nth-child(3),
   .food-log-hdr span:nth-child(4),
   .food-log-item .fi-val:nth-child(2),.food-log-item .fi-val:nth-child(3),
@@ -642,19 +664,79 @@ const DAYS=[
   ]},
 ];
 
-function renderMenu(){
+function todayDateKey(){const d=new Date();d.setHours(0,0,0,0);return d.toISOString().split('T')[0]}
+function todayDayIndex(){return (new Date().getDay()+6)%7}
+
+let todayFoodByComida={};
+let replaceMode={};
+
+async function loadTodayFood(){
+  todayFoodByComida={};
+  if(!isConfigured()) return;
+  try{
+    const data=await apiFetch('/api/food?date='+todayDateKey());
+    data.forEach(item=>{
+      (todayFoodByComida[item.comida]=todayFoodByComida[item.comida]||[]).push(item);
+    });
+  }catch(e){/* silencioso: el menú simplemente no mostrará estado */}
+}
+
+function mealStatusHTML(di,mi,m){
+  const key=di+'-'+mi;
+  const logged=todayFoodByComida[m.type]||[];
+  if(logged.length>0){
+    const totalKcal=logged.reduce((a,i)=>a+i.kcal,0);
+    const names=logged.map(i=>i.name).join(', ');
+    return `
+      <div class="meal-status done">
+        <span class="ms-check">✓</span>
+        <span class="ms-text">Hoy: ${names} · ${totalKcal} kcal</span>
+        <button class="btn small" onclick="goToRegistro()">Ver / editar</button>
+      </div>`;
+  }
+  return `
+    <div class="meal-status">
+      <div class="ms-actions">
+        <button class="btn primary" onclick="logComoEsta(${di},${mi})">✓ Comí esto</button>
+        <button class="btn" onclick="toggleReplace('${key}')">🔄 Comí otra cosa</button>
+      </div>
+      <div class="replace-panel" id="mreplace-${key}" style="display:none">
+        <div class="replace-tabs">
+          <button class="btn small active" id="rtab-foto-${key}" onclick="setReplaceMode('${key}','foto')">📷 Foto</button>
+          <button class="btn small" id="rtab-texto-${key}" onclick="setReplaceMode('${key}','texto')">✍️ Describir</button>
+        </div>
+        <div id="rmode-foto-${key}">
+          <input type="file" accept="image/*" capture="environment" id="rfile-${key}">
+        </div>
+        <div id="rmode-texto-${key}" style="display:none">
+          <textarea id="rtext-${key}" placeholder="ej: 2 completos italianos con papas fritas y bebida"></textarea>
+        </div>
+        <button class="btn primary" style="width:100%" onclick="analyzeReplace(${di},${mi},'${key}')" id="rbtn-${key}">✦ Analizar y registrar</button>
+        <div class="ms-replace-status" id="rstatus-${key}"></div>
+      </div>
+    </div>`;
+}
+
+function goToRegistro(){
+  const link=[...document.querySelectorAll('.nav-link')].find(l=>(l.getAttribute('onclick')||'').includes("'tracking'"));
+  showSection('tracking',link);
+}
+
+async function renderMenu(){
+  await loadTodayFood();
   const tabs=document.getElementById('day-tabs');
   const cont=document.getElementById('days-container');
-  tabs.innerHTML=DAYS.map((d,i)=>`<button class="tab ${i===0?'active':''}" onclick="showDay(${i})">${d.name}</button>`).join('');
+  const todayIdx=todayDayIndex();
+  tabs.innerHTML=DAYS.map((d,i)=>`<button class="tab ${i===todayIdx?'active':''}" onclick="showDay(${i})">${d.name}${i===todayIdx?' · hoy':''}</button>`).join('');
   cont.innerHTML=DAYS.map((day,di)=>`
-    <div id="day-${di}" style="display:${di===0?'block':'none'}">
+    <div id="day-${di}" style="display:${di===todayIdx?'block':'none'}">
       <div class="day-macros">
         <div class="dm"><div class="v g">${day.kcal}</div><div class="l">kcal</div></div>
         <div class="dm"><div class="v b">${day.prot}</div><div class="l">proteína</div></div>
         <div class="dm"><div class="v a">${day.carb}</div><div class="l">carbos</div></div>
         <div class="dm"><div class="v c">${day.lip}</div><div class="l">lípidos</div></div>
       </div>
-      ${day.meals.map(m=>`
+      ${day.meals.map((m,mi)=>`
         <div class="card">
           <div class="card-hdr">
             <div class="meal-icon ${m.type}">${m.icon}</div>
@@ -670,6 +752,7 @@ function renderMenu(){
               <span class="pill c">C ${m.c}</span>
               <span class="pill g">G ${m.g}</span>
             </div>
+            ${mealStatusHTML(di,mi,m)}
           </div>
         </div>`).join('')}
     </div>`).join('');
@@ -680,11 +763,117 @@ function showDay(n){
   document.querySelectorAll('#day-tabs .tab').forEach((t,i)=>t.classList.toggle('active',i===n));
 }
 
+async function logComoEsta(di,mi){
+  const m=DAYS[di].meals[mi];
+  const item={
+    date:todayDateKey(),
+    name:m.recipe,
+    comida:m.type,
+    kcal:parseInt((m.kcal||'').replace(/[^\d]/g,''))||0,
+    prot:parseInt(m.p)||0,
+    carb:parseInt(m.c)||0,
+    lip:parseInt(m.g)||0,
+  };
+  try{
+    await apiFetch('/api/food',{method:'POST',body:JSON.stringify(item)});
+    renderMenu();
+    renderTracking();
+  }catch(e){alert('Error al registrar: '+e.message)}
+}
+
+function toggleReplace(key){
+  const panel=document.getElementById('mreplace-'+key);
+  panel.style.display=panel.style.display==='none'?'block':'none';
+}
+
+function setReplaceMode(key,mode){
+  replaceMode[key]=mode;
+  document.getElementById('rmode-foto-'+key).style.display=mode==='foto'?'block':'none';
+  document.getElementById('rmode-texto-'+key).style.display=mode==='texto'?'block':'none';
+  document.getElementById('rtab-foto-'+key).classList.toggle('active',mode==='foto');
+  document.getElementById('rtab-texto-'+key).classList.toggle('active',mode==='texto');
+}
+
+function fileToBase64(file){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onload=()=>resolve(reader.result.split(',')[1]);
+    reader.onerror=reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function analyzeReplace(di,mi,key){
+  const anthropicKey=localStorage.getItem('anthropic_key');
+  const status=document.getElementById('rstatus-'+key);
+  if(!anthropicKey){
+    status.textContent='Primero guarda tu API key de Anthropic en la pestaña IA ✦';
+    status.style.color='var(--coral)';
+    return;
+  }
+  const mode=replaceMode[key]||'foto';
+  let content;
+  if(mode==='foto'){
+    const fileInput=document.getElementById('rfile-'+key);
+    const file=fileInput.files[0];
+    if(!file){status.textContent='Selecciona una foto primero';status.style.color='var(--coral)';return}
+    let base64;
+    try{ base64=await fileToBase64(file); }
+    catch(e){ status.textContent='No se pudo leer la foto'; status.style.color='var(--coral)'; return; }
+    content=[
+      {type:'image',source:{type:'base64',media_type:file.type||'image/jpeg',data:base64}},
+      {type:'text',text:'Esta es una foto de lo que estoy comiendo, en reemplazo de una comida planificada. Estima el nombre del plato y sus macros aproximados. Responde ÚNICAMENTE con un objeto JSON, sin texto adicional, con este formato exacto: {"name":"nombre del plato en español chileno","kcal":numero,"prot":numero,"carb":numero,"lip":numero}'}
+    ];
+  } else {
+    const text=document.getElementById('rtext-'+key).value.trim();
+    if(!text){status.textContent='Describe qué comiste primero';status.style.color='var(--coral)';return}
+    content=`Estoy reemplazando una comida planificada por esto: "${text}". Estima el nombre del plato y sus macros aproximados. Responde ÚNICAMENTE con un objeto JSON, sin texto adicional, con este formato exacto: {"name":"nombre del plato en español chileno","kcal":numero,"prot":numero,"carb":numero,"lip":numero}`;
+  }
+
+  const btn=document.getElementById('rbtn-'+key);
+  btn.disabled=true;
+  status.textContent='Analizando con IA...';
+  status.style.color='var(--muted)';
+
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':anthropicKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:300,messages:[{role:'user',content}]})
+    });
+    if(!res.ok){const err=await res.json();throw new Error(err.error?.message||'Error en la API')}
+    const data=await res.json();
+    const raw=data.content[0].text;
+    const match=raw.match(/\{[\s\S]*\}/);
+    if(!match) throw new Error('No se pudo interpretar la respuesta de la IA');
+    const parsed=JSON.parse(match[0]);
+
+    const m=DAYS[di].meals[mi];
+    const item={
+      date:todayDateKey(),
+      name:parsed.name||'Comida reemplazada',
+      comida:m.type,
+      kcal:Math.round(parsed.kcal)||0,
+      prot:Math.round(parsed.prot)||0,
+      carb:Math.round(parsed.carb)||0,
+      lip:Math.round(parsed.lip)||0,
+    };
+    await apiFetch('/api/food',{method:'POST',body:JSON.stringify(item)});
+    renderMenu();
+    renderTracking();
+  }catch(e){
+    status.textContent='Error: '+e.message;
+    status.style.color='var(--coral)';
+    btn.disabled=false;
+  }
+}
+
 /* ══════════════════════════════════════
    TRACKING
 ══════════════════════════════════════ */
 let trackDate=new Date();
 trackDate.setHours(0,0,0,0);
+let lastTrackData=[];
 
 function trackDateKey(){return trackDate.toISOString().split('T')[0]}
 
@@ -713,6 +902,7 @@ async function addFood(){
     await apiFetch('/api/food',{method:'POST',body:JSON.stringify(item)});
     ['f-name','f-kcal','f-prot','f-carb','f-lip'].forEach(id=>document.getElementById(id).value='');
     renderTracking();
+    if(trackDateKey()===todayDateKey()) renderMenu();
   }catch(e){alert('Error al guardar: '+e.message)}
 }
 
@@ -720,7 +910,50 @@ async function deleteFood(id){
   try{
     await apiFetch('/api/food/'+id,{method:'DELETE'});
     renderTracking();
+    if(trackDateKey()===todayDateKey()) renderMenu();
   }catch(e){alert('Error al eliminar: '+e.message)}
+}
+
+const COMIDA_OPTIONS=[['des','Desayuno'],['col','Colación AM'],['alm','Almuerzo'],['cop','Colación PM'],['cen','Cena']];
+
+function startEditFood(id){
+  const item=lastTrackData.find(i=>i.id===id);
+  if(!item) return;
+  const row=document.getElementById('fi-row-'+id);
+  row.classList.add('editing');
+  row.innerHTML=`
+    <div class="fi-edit-row">
+      <input class="fi-e-name" type="text" value="${item.name.replace(/"/g,'&quot;')}">
+      <select class="fi-e-comida">
+        ${COMIDA_OPTIONS.map(([v,l])=>`<option value="${v}" ${v===item.comida?'selected':''}>${l}</option>`).join('')}
+      </select>
+      <input class="fi-e-kcal" type="number" value="${item.kcal}" placeholder="kcal">
+      <input class="fi-e-prot" type="number" value="${item.prot}" placeholder="P">
+      <input class="fi-e-carb" type="number" value="${item.carb}" placeholder="C">
+      <input class="fi-e-lip" type="number" value="${item.lip}" placeholder="G">
+    </div>
+    <div class="fi-edit-actions">
+      <button class="btn small" onclick="renderTracking()">Cancelar</button>
+      <button class="btn small primary" onclick="saveEditFood(${id})">Guardar</button>
+    </div>`;
+}
+
+async function saveEditFood(id){
+  const row=document.getElementById('fi-row-'+id);
+  const item={
+    date:trackDateKey(),
+    name:row.querySelector('.fi-e-name').value.trim()||'Sin nombre',
+    comida:row.querySelector('.fi-e-comida').value,
+    kcal:parseInt(row.querySelector('.fi-e-kcal').value)||0,
+    prot:parseInt(row.querySelector('.fi-e-prot').value)||0,
+    carb:parseInt(row.querySelector('.fi-e-carb').value)||0,
+    lip:parseInt(row.querySelector('.fi-e-lip').value)||0,
+  };
+  try{
+    await apiFetch('/api/food/'+id,{method:'PUT',body:JSON.stringify(item)});
+    renderTracking();
+    if(trackDateKey()===todayDateKey()) renderMenu();
+  }catch(e){alert('Error al guardar: '+e.message)}
 }
 
 async function renderTracking(){
@@ -743,6 +976,7 @@ async function renderTracking(){
     document.querySelectorAll('.food-log-item').forEach(el=>el.remove());
     return;
   }
+  lastTrackData=data;
   empty.textContent='Sin registros para este día';
   const totals=data.reduce((a,i)=>({kcal:a.kcal+i.kcal,prot:a.prot+i.prot,carb:a.carb+i.carb,lip:a.lip+i.lip}),{kcal:0,prot:0,carb:0,lip:0});
   const METAS={kcal:1906,prot:162,carb:195,lip:54};
@@ -766,13 +1000,17 @@ async function renderTracking(){
   data.forEach(item=>{
     const row=document.createElement('div');
     row.className='food-log-item';
+    row.id='fi-row-'+item.id;
     row.innerHTML=`
       <span class="fi-name">${item.name}<span class="comida-tag ${item.comida}">${comidaNames[item.comida]}</span></span>
       <span class="fi-val">${item.kcal}</span>
       <span class="fi-val">${item.prot}g</span>
       <span class="fi-val">${item.carb}g</span>
       <span class="fi-val">${item.lip}g</span>
-      <span class="fi-del" onclick="deleteFood(${item.id})">×</span>`;
+      <span class="fi-actions">
+        <span class="fi-edit" onclick="startEditFood(${item.id})">✎</span>
+        <span class="fi-del" onclick="deleteFood(${item.id})">×</span>
+      </span>`;
     log.appendChild(row);
   });
 }
