@@ -142,6 +142,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,14,12,.95);backdrop-fil
 .replace-panel textarea{background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:12.5px;padding:8px 10px;font-family:'Inter',sans-serif;width:100%;min-height:60px;resize:vertical;margin-bottom:10px}
 .replace-panel input[type=file]{font-size:11.5px;color:var(--muted);margin-bottom:10px;width:100%}
 .ms-replace-status{font-size:11px;margin-top:8px;color:var(--muted)}
+.replace-confirm{margin-top:8px;padding-top:10px;border-top:1px solid var(--border)}
+.rc-macros{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 
 /* ═══ TRACKING ═══ */
 .track-date{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
@@ -706,13 +708,14 @@ function mealStatusHTML(di,mi,m){
           <button class="btn small" id="rtab-texto-${key}" onclick="setReplaceMode('${key}','texto')">✍️ Describir</button>
         </div>
         <div id="rmode-foto-${key}">
-          <input type="file" accept="image/*" capture="environment" id="rfile-${key}">
+          <input type="file" accept="image/*" id="rfile-${key}">
         </div>
         <div id="rmode-texto-${key}" style="display:none">
           <textarea id="rtext-${key}" placeholder="ej: 2 completos italianos con papas fritas y bebida"></textarea>
         </div>
-        <button class="btn primary" style="width:100%" onclick="analyzeReplace(${di},${mi},'${key}')" id="rbtn-${key}">✦ Analizar y registrar</button>
+        <button class="btn primary" style="width:100%" onclick="analyzeReplace(${di},${mi},'${key}')" id="rbtn-${key}">✦ Analizar con IA</button>
         <div class="ms-replace-status" id="rstatus-${key}"></div>
+        <div class="replace-confirm" id="rconfirm-${key}" style="display:none"></div>
       </div>
     </div>`;
 }
@@ -834,6 +837,9 @@ async function analyzeReplace(di,mi,key){
   btn.disabled=true;
   status.textContent='Analizando con IA...';
   status.style.color='var(--muted)';
+  const confirmBox=document.getElementById('rconfirm-'+key);
+  confirmBox.style.display='none';
+  confirmBox.innerHTML='';
 
   try{
     const res=await fetch('https://api.anthropic.com/v1/messages',{
@@ -848,23 +854,67 @@ async function analyzeReplace(di,mi,key){
     if(!match) throw new Error('No se pudo interpretar la respuesta de la IA');
     const parsed=JSON.parse(match[0]);
 
-    const m=DAYS[di].meals[mi];
-    const item={
-      date:todayDateKey(),
+    status.textContent='La IA detectó esto — revisa y corrige si hace falta antes de guardar:';
+    status.style.color='var(--muted)';
+    showAnalysisConfirm(key,{
       name:parsed.name||'Comida reemplazada',
-      comida:m.type,
       kcal:Math.round(parsed.kcal)||0,
       prot:Math.round(parsed.prot)||0,
       carb:Math.round(parsed.carb)||0,
       lip:Math.round(parsed.lip)||0,
-    };
-    await apiFetch('/api/food',{method:'POST',body:JSON.stringify(item)});
-    renderMenu();
-    renderTracking();
+    });
+    btn.disabled=false;
   }catch(e){
     status.textContent='Error: '+e.message;
     status.style.color='var(--coral)';
     btn.disabled=false;
+  }
+}
+
+function showAnalysisConfirm(key,item){
+  const box=document.getElementById('rconfirm-'+key);
+  box.style.display='block';
+  box.innerHTML=`
+    <input class="rc-name form-input" type="text" value="${item.name.replace(/"/g,'&quot;')}" style="margin-bottom:8px">
+    <div class="rc-macros">
+      <input class="rc-kcal form-input" type="number" value="${item.kcal}" placeholder="kcal">
+      <input class="rc-prot form-input" type="number" value="${item.prot}" placeholder="P">
+      <input class="rc-carb form-input" type="number" value="${item.carb}" placeholder="C">
+      <input class="rc-lip form-input" type="number" value="${item.lip}" placeholder="G">
+    </div>
+    <div class="fi-edit-actions" style="margin-top:8px">
+      <button class="btn small" onclick="discardAnalysis('${key}')">✕ Descartar</button>
+      <button class="btn small primary" onclick="confirmAnalysis(${key.split('-')[0]},${key.split('-')[1]},'${key}')">✓ Guardar</button>
+    </div>`;
+}
+
+function discardAnalysis(key){
+  document.getElementById('rconfirm-'+key).style.display='none';
+  document.getElementById('rconfirm-'+key).innerHTML='';
+  document.getElementById('rstatus-'+key).textContent='Descartado. Puedes intentar de nuevo.';
+  document.getElementById('rstatus-'+key).style.color='var(--muted)';
+}
+
+async function confirmAnalysis(di,mi,key){
+  const box=document.getElementById('rconfirm-'+key);
+  const status=document.getElementById('rstatus-'+key);
+  const m=DAYS[di].meals[mi];
+  const item={
+    date:todayDateKey(),
+    name:box.querySelector('.rc-name').value.trim()||'Comida reemplazada',
+    comida:m.type,
+    kcal:parseInt(box.querySelector('.rc-kcal').value)||0,
+    prot:parseInt(box.querySelector('.rc-prot').value)||0,
+    carb:parseInt(box.querySelector('.rc-carb').value)||0,
+    lip:parseInt(box.querySelector('.rc-lip').value)||0,
+  };
+  try{
+    await apiFetch('/api/food',{method:'POST',body:JSON.stringify(item)});
+    renderMenu();
+    renderTracking();
+  }catch(e){
+    status.textContent='Error al guardar: '+e.message;
+    status.style.color='var(--coral)';
   }
 }
 
