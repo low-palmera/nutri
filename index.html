@@ -89,19 +89,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,14,12,.95);backdrop-fil
 .comidas-table td:first-child{color:var(--text);font-weight:500}
 .comidas-table tr:last-child td{border-bottom:none}
 
-/* LISTA */
-.lista-sec{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:1.25rem 0 6px;padding-left:2px}
-.lista-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:10px}
-.lista-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s}
-.lista-item:last-child{border-bottom:none}
-.lista-item:hover{background:var(--bg2)}
-.lista-item.done{opacity:.4}
-.lista-item.done .li-name{text-decoration:line-through}
-.li-cb{width:18px;height:18px;border:1.5px solid var(--border2);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s;font-size:10px;color:transparent}
-.lista-item.done .li-cb{background:var(--green2);border-color:var(--green2);color:#fff}
-.li-name{font-size:13px;flex:1}
-.li-qty{font-size:11px;color:var(--muted);white-space:nowrap}
-.lista-footer{display:flex;justify-content:space-between;align-items:center;padding:1rem 0 0;font-size:12px;color:var(--muted)}
 
 /* BUTTONS */
 .btn{font-size:12px;font-weight:500;padding:8px 16px;border-radius:var(--r);border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .15s}
@@ -109,24 +96,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,14,12,.95);backdrop-fil
 .btn.primary{background:var(--green-bg);border-color:var(--green2);color:var(--green)}
 .btn.primary:hover{background:#243824}
 .btn.danger{border-color:#3a1a1a;color:var(--coral)}
-
-/* ═══ AGUA ═══ */
-.agua-container{display:grid;grid-template-columns:200px 1fr;gap:1.5rem;align-items:start}
-.vaso-wrap{display:flex;flex-direction:column;align-items:center;gap:12px}
-.vaso-svg{width:120px;height:180px}
-.agua-total{font-size:28px;font-weight:600;color:var(--blue);text-align:center}
-.agua-meta{font-size:11px;color:var(--muted);text-align:center}
-.agua-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.agua-btn{padding:10px;border-radius:var(--r);border:1px solid var(--border);background:var(--bg2);color:var(--text);cursor:pointer;font-size:12px;font-weight:500;transition:all .15s;text-align:center}
-.agua-btn:hover{border-color:var(--blue);color:var(--blue)}
-.agua-log{margin-top:1rem}
-.agua-log-item{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px}
-.agua-log-item:last-child{border-bottom:none}
-.agua-log-item .hora{color:var(--muted)}
-.agua-tip{margin-top:1rem;padding:12px;background:var(--bg2);border-radius:var(--r);border:1px solid var(--border);font-size:12px;color:var(--muted);line-height:1.6}
-.agua-tip strong{color:var(--blue)}
-.notif-btn{width:100%;margin-top:10px;padding:10px;border-radius:var(--r);border:1px dashed var(--border2);background:transparent;color:var(--muted);cursor:pointer;font-size:12px;transition:all .15s}
-.notif-btn:hover{border-color:var(--blue);color:var(--blue)}
 
 /* ═══ MEAL STATUS (menú → registro rápido) ═══ */
 .meal-status{margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
@@ -151,20 +120,17 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,14,12,.95);backdrop-fil
 .track-date{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
 .track-date-label{font-size:15px;font-weight:500}
 .track-date-nav{display:flex;gap:8px}
-.track-macros{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1.25rem}
-.track-macro{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:12px}
-.track-macro .tm-label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
-.track-macro .tm-bar{height:4px;background:var(--bg3);border-radius:2px;margin-bottom:6px;overflow:hidden}
-.track-macro .tm-fill{height:100%;border-radius:2px;transition:width .4s}
-.tm-fill.g{background:var(--green)}.tm-fill.b{background:var(--blue)}.tm-fill.a{background:var(--amber)}.tm-fill.c{background:var(--coral)}
-.track-macro .tm-vals{display:flex;justify-content:space-between;font-size:11px}
-.track-macro .tm-cur{font-weight:600}
-.track-macro .tm-max{color:var(--muted)}
+.track-macros-compact{display:flex;flex-direction:column;gap:6px;margin-bottom:1.25rem;background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:12px 16px}
+.tmc{display:grid;grid-template-columns:36px 1fr 70px;align-items:center;gap:10px;font-size:11px}
+.tmc-lbl{color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-size:10px}
+.tmc-bar{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.tmc-fill{height:100%;border-radius:2px;transition:width .4s}
+.tmc-fill.g{background:var(--green)}.tmc-fill.b{background:var(--blue)}.tmc-fill.a{background:var(--amber)}.tmc-fill.c{background:var(--coral)}
+.tmc-val{text-align:right;color:var(--muted)}
+.tmc-val b{color:var(--text);font-weight:600}
 .add-food-form{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:1.25rem}
-.add-food-form h3{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px}
-.form-row{display:grid;grid-template-columns:1fr 80px 70px 70px 70px auto;gap:8px;align-items:end}
-.form-group{display:flex;flex-direction:column;gap:4px}
-.form-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.af-row{display:flex;gap:8px}
+.af-row .form-input{flex:1}
 input.form-input,select.form-input{background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:12.5px;padding:7px 10px;font-family:'Inter',sans-serif;width:100%;transition:border .15s}
 input.form-input:focus,select.form-input:focus{outline:none;border-color:var(--green2)}
 .food-log{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
@@ -191,46 +157,19 @@ input.form-input:focus,select.form-input:focus{outline:none;border-color:var(--g
 .comida-tag.cop{background:#1A0A20;color:#9B8ED4}
 .comida-tag.cen{background:#201A0A;color:#C8943A}
 
-/* ═══ GENERADOR ═══ */
-.gen-container{display:flex;flex-direction:column;gap:1rem}
-.api-key-block{background:var(--bg1);border:1px dashed var(--border2);border-radius:var(--r);padding:16px}
-.api-key-block p{font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.6}
-.api-key-block a{color:var(--blue);text-decoration:none}
-.api-key-block a:hover{text-decoration:underline}
-.api-key-row{display:flex;gap:8px}
-.gen-options{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:16px}
-.gen-options h3{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px}
-.gen-checks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
-.gen-check{display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer}
-.gen-check input{accent-color:var(--green);width:14px;height:14px}
-.gen-result{background:var(--bg1);border:1px solid var(--border);border-radius:var(--r);padding:16px;min-height:120px}
-.gen-result-inner{font-size:13px;line-height:1.8;color:var(--text);white-space:pre-wrap}
-.gen-loading{display:none;align-items:center;gap:10px;color:var(--muted);font-size:13px;padding:1rem 0}
-.gen-loading.show{display:flex}
-.spinner{width:16px;height:16px;border:2px solid var(--border2);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
-@keyframes spin{to{transform:rotate(360deg)}}
-.gen-result h4{font-family:'Playfair Display',serif;font-size:16px;margin:1rem 0 6px;color:var(--green)}
-.gen-result h4:first-child{margin-top:0}
-.gen-result ul{padding-left:1.2rem;color:var(--muted);font-size:12.5px;line-height:1.8}
-.gen-result p{font-size:12.5px;color:var(--muted);line-height:1.8}
-.gen-result strong{color:var(--text);font-weight:500}
-
 /* RESPONSIVE */
 @media(max-width:640px){
   nav{padding:0 1rem}
   .section{padding:1.25rem}
-  .macro-bar,.track-macros{grid-template-columns:repeat(2,1fr)}
+  .macro-bar{grid-template-columns:repeat(2,1fr)}
   .two-col{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr 1fr;row-gap:8px}
+  .af-row{flex-direction:column}
   .food-log-hdr,.food-log-item{grid-template-columns:1fr 60px 56px}
   .fi-edit-row{grid-template-columns:1fr 1fr;row-gap:6px}
   .food-log-hdr span:nth-child(2),.food-log-hdr span:nth-child(3),
   .food-log-hdr span:nth-child(4),
   .food-log-item .fi-val:nth-child(2),.food-log-item .fi-val:nth-child(3),
   .food-log-item .fi-val:nth-child(4){display:none}
-  .agua-container{grid-template-columns:1fr}
-  .agua-btns{grid-template-columns:repeat(4,1fr)}
-  .gen-checks{grid-template-columns:1fr}
   .hero-title{font-size:22px}
 }
 </style>
@@ -243,10 +182,6 @@ input.form-input:focus,select.form-input:focus{outline:none;border-color:var(--g
     <button class="nav-link active" onclick="showSection('pauta',this)">Pauta</button>
     <button class="nav-link" onclick="showSection('menu',this)">Menú</button>
     <button class="nav-link" onclick="showSection('tracking',this)">Registro</button>
-    <button class="nav-link" onclick="showSection('agua',this)">Agua</button>
-    <button class="nav-link" onclick="showSection('lista',this)">Compras</button>
-    <button class="nav-link" onclick="showSection('gen',this)">IA ✦</button>
-    <button class="nav-link" onclick="showSection('config',this)">⚙</button>
   </div>
 </nav>
 
@@ -314,7 +249,7 @@ input.form-input:focus,select.form-input:focus{outline:none;border-color:var(--g
 <div class="section" id="sec-menu">
   <div class="hero">
     <div class="hero-title">Menú semanal</div>
-    <div class="hero-sub">7 días · ~1.900 kcal · construido con tu lista de compras</div>
+    <div class="hero-sub">7 días · ~1.900 kcal</div>
   </div>
   <div class="tabs" id="day-tabs"></div>
   <div id="days-container"></div>
@@ -335,70 +270,19 @@ input.form-input:focus,select.form-input:focus{outline:none;border-color:var(--g
     </div>
   </div>
 
-  <div class="track-macros">
-    <div class="track-macro">
-      <div class="tm-label">Calorías</div>
-      <div class="tm-bar"><div class="tm-fill g" id="bar-kcal" style="width:0%"></div></div>
-      <div class="tm-vals"><span class="tm-cur g" id="cur-kcal" style="color:var(--green)">0</span><span class="tm-max">1906</span></div>
-    </div>
-    <div class="track-macro">
-      <div class="tm-label">Proteína</div>
-      <div class="tm-bar"><div class="tm-fill b" id="bar-prot" style="width:0%"></div></div>
-      <div class="tm-vals"><span class="tm-cur" id="cur-prot" style="color:var(--blue)">0g</span><span class="tm-max">162g</span></div>
-    </div>
-    <div class="track-macro">
-      <div class="tm-label">Carbos</div>
-      <div class="tm-bar"><div class="tm-fill a" id="bar-carb" style="width:0%"></div></div>
-      <div class="tm-vals"><span class="tm-cur" id="cur-carb" style="color:var(--amber)">0g</span><span class="tm-max">195g</span></div>
-    </div>
-    <div class="track-macro">
-      <div class="tm-label">Lípidos</div>
-      <div class="tm-bar"><div class="tm-fill c" id="bar-lip" style="width:0%"></div></div>
-      <div class="tm-vals"><span class="tm-cur" id="cur-lip" style="color:var(--coral)">0g</span><span class="tm-max">54g</span></div>
-    </div>
+  <div class="track-macros-compact">
+    <div class="tmc"><span class="tmc-lbl">Kcal</span><div class="tmc-bar"><div class="tmc-fill g" id="bar-kcal" style="width:0%"></div></div><span class="tmc-val"><b id="cur-kcal">0</b>/1906</span></div>
+    <div class="tmc"><span class="tmc-lbl">Prot</span><div class="tmc-bar"><div class="tmc-fill b" id="bar-prot" style="width:0%"></div></div><span class="tmc-val"><b id="cur-prot">0</b>/162g</span></div>
+    <div class="tmc"><span class="tmc-lbl">Carb</span><div class="tmc-bar"><div class="tmc-fill a" id="bar-carb" style="width:0%"></div></div><span class="tmc-val"><b id="cur-carb">0</b>/195g</span></div>
+    <div class="tmc"><span class="tmc-lbl">Líp</span><div class="tmc-bar"><div class="tmc-fill c" id="bar-lip" style="width:0%"></div></div><span class="tmc-val"><b id="cur-lip">0</b>/54g</span></div>
   </div>
 
   <div class="add-food-form">
-    <h3>Agregar alimento</h3>
-    <div class="form-row">
-      <div class="form-group">
-        <span class="form-label">Alimento</span>
-        <input class="form-input" id="f-name" type="text" placeholder="ej: Pechuga de pollo">
-      </div>
-      <div class="form-group">
-        <span class="form-label">Comida</span>
-        <select class="form-input" id="f-comida">
-          <option value="des">Desayuno</option>
-          <option value="col">Colación AM</option>
-          <option value="alm" selected>Almuerzo</option>
-          <option value="cop">Colación PM</option>
-          <option value="cen">Cena</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <span class="form-label">kcal</span>
-        <input class="form-input" id="f-kcal" type="number" placeholder="0" min="0">
-      </div>
-      <div class="form-group">
-        <span class="form-label">Prot (g)</span>
-        <input class="form-input" id="f-prot" type="number" placeholder="0" min="0">
-      </div>
-      <div class="form-group">
-        <span class="form-label">Carb (g)</span>
-        <input class="form-input" id="f-carb" type="number" placeholder="0" min="0">
-      </div>
-      <div class="form-group">
-        <span class="form-label">Lip (g)</span>
-        <input class="form-input" id="f-lip" type="number" placeholder="0" min="0">
-      </div>
-      <div class="form-group" style="justify-content:flex-end">
-        <button class="btn primary" onclick="addFood()" style="white-space:nowrap">+ Agregar</button>
-      </div>
+    <div class="af-row">
+      <input class="form-input" id="f-name" type="text" placeholder="¿Qué comiste? ej: Pechuga de pollo con arroz" onkeydown="if(event.key==='Enter')addFood()">
+      <button class="btn primary" onclick="addFood()" id="af-add-btn" style="white-space:nowrap">✦ Agregar</button>
     </div>
-    <div class="af-ai-row">
-      <button class="btn small" onclick="autocompleteMacros()" id="af-ai-btn">✦ Autocompletar macros con IA</button>
-      <span class="af-ai-status" id="af-ai-status"></span>
-    </div>
+    <div class="af-ai-row" id="af-ai-status"></div>
   </div>
 
   <div class="food-log" id="food-log">
@@ -408,135 +292,6 @@ input.form-input:focus,select.form-input:focus{outline:none;border-color:var(--g
       <span></span>
     </div>
     <div class="food-log-empty" id="log-empty">Sin registros para este día</div>
-  </div>
-</div>
-
-<!-- ═══════════ AGUA ═══════════ -->
-<div class="section" id="sec-agua">
-  <div class="hero">
-    <div class="hero-title">Hidratación</div>
-    <div class="hero-sub">Meta diaria: 2.000 ml · hoy</div>
-  </div>
-  <div class="agua-container">
-    <div class="vaso-wrap">
-      <svg class="vaso-svg" viewBox="0 0 120 180" fill="none">
-        <defs>
-          <clipPath id="vaso-clip">
-            <path d="M15 20 L105 20 L95 165 L25 165 Z"/>
-          </clipPath>
-        </defs>
-        <path d="M15 20 L105 20 L95 165 L25 165 Z" fill="#1A1A17" stroke="#2C2C28" stroke-width="1.5"/>
-        <rect id="agua-fill" x="0" y="0" width="120" height="180" fill="#1A3A5C" clip-path="url(#vaso-clip)" opacity="0.8"/>
-        <path d="M15 20 L105 20 L95 165 L25 165 Z" fill="none" stroke="#2C2C28" stroke-width="1.5"/>
-        <line x1="15" y1="60" x2="105" y2="60" stroke="#2C2C28" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
-        <line x1="20" y1="100" x2="100" y2="100" stroke="#2C2C28" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
-        <line x1="22" y1="140" x2="98" y2="140" stroke="#2C2C28" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.5"/>
-        <text x="60" y="55" text-anchor="middle" fill="#4A4A45" font-size="9" font-family="Inter">500ml</text>
-        <text x="60" y="95" text-anchor="middle" fill="#4A4A45" font-size="9" font-family="Inter">1000ml</text>
-        <text x="60" y="135" text-anchor="middle" fill="#4A4A45" font-size="9" font-family="Inter">1500ml</text>
-      </svg>
-      <div class="agua-total" id="agua-total-display">0 ml</div>
-      <div class="agua-meta" id="agua-meta-display">de 2.000 ml</div>
-      <button class="notif-btn" onclick="pedirNotificaciones()" id="notif-btn">🔔 Activar recordatorios</button>
-    </div>
-    <div>
-      <div class="agua-btns">
-        <div class="agua-btn" onclick="addAgua(150)">+150 ml<br><small style="color:var(--muted)">½ vaso</small></div>
-        <div class="agua-btn" onclick="addAgua(250)">+250 ml<br><small style="color:var(--muted)">1 vaso</small></div>
-        <div class="agua-btn" onclick="addAgua(500)">+500 ml<br><small style="color:var(--muted)">1 botella</small></div>
-        <div class="agua-btn" onclick="addAgua(-250)" style="color:var(--muted)">−250 ml<br><small>corregir</small></div>
-      </div>
-      <div class="agua-tip" style="margin-top:12px">
-        <strong>Test de hidratación:</strong> color de orina niveles 1–3 = bien hidratado. Niveles 4–8 = beber más agua.<br><br>
-        <strong>Estrategia:</strong> usa una botella de 1 litro y llénala 2 veces al día.
-      </div>
-      <div class="agua-log" id="agua-log"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════ LISTA ═══════════ -->
-<div class="section" id="sec-lista">
-  <div class="hero">
-    <div class="hero-title">Lista de compras</div>
-    <div class="hero-sub">2 semanas · 26 productos</div>
-  </div>
-  <div id="lista-container"></div>
-  <div class="lista-footer">
-    <span id="lista-counter">0 de 26 productos</span>
-    <button class="btn" onclick="resetLista()">Limpiar</button>
-  </div>
-</div>
-
-<!-- ═══════════ GENERADOR IA ═══════════ -->
-<div class="section" id="sec-gen">
-  <div class="hero">
-    <div class="hero-title">Generador de menú ✦</div>
-    <div class="hero-sub">Claude genera un menú personalizado respetando tu pauta</div>
-  </div>
-  <div class="gen-container">
-    <div class="api-key-block">
-      <p>Para usar esta función necesitas una API key de Anthropic.<br>
-      Consíguela gratis en <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a> → API Keys → Create Key</p>
-      <div class="api-key-row">
-        <input class="form-input" id="api-key-input" type="password" placeholder="sk-ant-api03-..." style="flex:1;font-family:monospace">
-        <button class="btn primary" onclick="saveApiKey()">Guardar</button>
-      </div>
-      <div id="api-key-status" style="font-size:11px;color:var(--muted);margin-top:6px"></div>
-    </div>
-
-    <div class="gen-options">
-      <h3>Opciones del menú</h3>
-      <div class="gen-checks">
-        <label class="gen-check"><input type="checkbox" id="opt-variado" checked> Variedad máxima</label>
-        <label class="gen-check"><input type="checkbox" id="opt-rapido"> Preparaciones rápidas (&lt;20 min)</label>
-        <label class="gen-check"><input type="checkbox" id="opt-lista"> Usar solo productos de la lista</label>
-        <label class="gen-check"><input type="checkbox" id="opt-mealprep"> Apto para meal prep</label>
-      </div>
-      <div class="form-group" style="margin-bottom:12px">
-        <span class="form-label">¿Algo específico que quieras incluir o evitar?</span>
-        <input class="form-input" id="gen-extra" type="text" placeholder="ej: quiero incluir legumbres, evitar atún esta semana...">
-      </div>
-      <button class="btn primary" onclick="generarMenu()" style="width:100%;padding:12px;font-size:13px">
-        ✦ Generar menú con IA
-      </button>
-    </div>
-
-    <div class="gen-loading" id="gen-loading">
-      <div class="spinner"></div>
-      <span>Claude está generando tu menú personalizado...</span>
-    </div>
-
-    <div class="gen-result" id="gen-result" style="display:none">
-      <div class="gen-result-inner" id="gen-result-inner"></div>
-      <div style="margin-top:1rem;display:flex;gap:8px">
-        <button class="btn" onclick="copiarMenu()">Copiar menú</button>
-        <button class="btn primary" onclick="generarMenu()">Regenerar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════ CONFIG / SYNC ═══════════ -->
-<div class="section" id="sec-config">
-  <div class="hero">
-    <div class="hero-title">Sincronización</div>
-    <div class="hero-sub">Registro, agua y lista ya sincronizan automáticamente entre tus dispositivos</div>
-  </div>
-  <div class="api-key-block">
-    <p>Este sitio viene preconfigurado con tu backend en Railway — no necesitas hacer nada. Usa los campos de abajo solo si quieres apuntar a otro servidor (ej. uno local para pruebas).</p>
-    <div class="form-group" style="margin-bottom:10px">
-      <span class="form-label">URL del backend</span>
-      <input class="form-input" id="cfg-url" type="text" placeholder="https://tu-app.up.railway.app">
-    </div>
-    <div class="form-group" style="margin-bottom:10px">
-      <span class="form-label">Token de acceso</span>
-      <input class="form-input" id="cfg-token" type="password" placeholder="tu-api-token">
-    </div>
-    <div class="api-key-row">
-      <button class="btn primary" onclick="saveConfig()">Guardar y probar conexión</button>
-    </div>
-    <div id="cfg-status" style="font-size:11px;color:var(--muted);margin-top:8px"></div>
   </div>
 </div>
 
@@ -561,7 +316,7 @@ function getApiToken(){return localStorage.getItem('api_token')||DEFAULT_API_TOK
 function isConfigured(){return !!(getApiBase()&&getApiToken())}
 
 async function apiFetch(path,opts={}){
-  if(!isConfigured()) throw new Error('Backend no configurado. Ve a ⚙ para conectar tu servidor.');
+  if(!isConfigured()) throw new Error('No se pudo conectar al backend.');
   const res=await fetch(getApiBase()+path,{
     ...opts,
     headers:{
@@ -579,42 +334,18 @@ async function apiFetch(path,opts={}){
   return res.json();
 }
 
-function saveConfig(){
-  const url=document.getElementById('cfg-url').value.trim();
-  const token=document.getElementById('cfg-token').value.trim();
-  const status=document.getElementById('cfg-status');
-  if(!url||!token){
-    status.textContent='Completa la URL y el token.';
-    status.style.color='var(--coral)';
-    return;
+function getOrAskAnthropicKey(){
+  let key=localStorage.getItem('anthropic_key');
+  if(!key){
+    try{
+      key=prompt('Pega tu API key de Anthropic (la consigues gratis en console.anthropic.com → API Keys) para usar las funciones de IA:');
+    }catch(e){ key=null; }
+    if(key){
+      key=key.trim();
+      if(key) localStorage.setItem('anthropic_key',key);
+    }
   }
-  localStorage.setItem('api_base',url.replace(/\/$/,''));
-  localStorage.setItem('api_token',token);
-  status.textContent='Probando conexión...';
-  status.style.color='var(--muted)';
-  fetch(getApiBase()+'/health').then(r=>{
-    if(!r.ok) throw new Error('status '+r.status);
-    status.textContent='✓ Conectado correctamente. Cargando tus datos...';
-    status.style.color='var(--green)';
-    initSyncedSections();
-  }).catch(e=>{
-    status.textContent='No se pudo conectar: '+e.message;
-    status.style.color='var(--coral)';
-  });
-}
-
-function loadConfigInputs(){
-  document.getElementById('cfg-url').value=getApiBase();
-  document.getElementById('cfg-token').value='••••••••••••••••';
-  const status=document.getElementById('cfg-status');
-  status.textContent='✓ Conectado (configuración incluida por defecto)';
-  status.style.color='var(--green)';
-}
-
-function initSyncedSections(){
-  renderTracking();
-  loadAgua();
-  renderLista();
+  return key||'';
 }
 
 /* ══════════════════════════════════════
@@ -813,10 +544,10 @@ function fileToBase64(file){
 }
 
 async function analyzeReplace(di,mi,key){
-  const anthropicKey=localStorage.getItem('anthropic_key');
   const status=document.getElementById('rstatus-'+key);
+  const anthropicKey=getOrAskAnthropicKey();
   if(!anthropicKey){
-    status.textContent='Primero guarda tu API key de Anthropic en la pestaña IA ✦';
+    status.textContent='Necesitas una API key de Anthropic para usar esta función';
     status.style.color='var(--coral)';
     return;
   }
@@ -942,39 +673,29 @@ function changeTrackDate(d){
   renderTracking();
 }
 
-async function addFood(){
-  const name=document.getElementById('f-name').value.trim();
-  if(!name){document.getElementById('f-name').focus();return}
-  const item={
-    date:trackDateKey(),
-    name,
-    comida:document.getElementById('f-comida').value,
-    kcal:parseInt(document.getElementById('f-kcal').value)||0,
-    prot:parseInt(document.getElementById('f-prot').value)||0,
-    carb:parseInt(document.getElementById('f-carb').value)||0,
-    lip:parseInt(document.getElementById('f-lip').value)||0,
-  };
-  try{
-    await apiFetch('/api/food',{method:'POST',body:JSON.stringify(item)});
-    ['f-name','f-kcal','f-prot','f-carb','f-lip'].forEach(id=>document.getElementById(id).value='');
-    document.getElementById('af-ai-status').textContent='';
-    renderTracking();
-    if(trackDateKey()===todayDateKey()) renderMenu();
-  }catch(e){alert('Error al guardar: '+e.message)}
+function comidaByHour(){
+  const h=new Date().getHours();
+  if(h<10) return 'des';
+  if(h<12) return 'col';
+  if(h<16) return 'alm';
+  if(h<19) return 'cop';
+  return 'cen';
 }
 
-async function autocompleteMacros(){
+async function addFood(){
   const nameInput=document.getElementById('f-name');
   const name=nameInput.value.trim();
   const status=document.getElementById('af-ai-status');
-  if(!name){nameInput.focus();status.textContent='Escribe primero el nombre del alimento';status.style.color='var(--coral)';return}
-  const anthropicKey=localStorage.getItem('anthropic_key');
+  if(!name){nameInput.focus();return}
+
+  const anthropicKey=getOrAskAnthropicKey();
   if(!anthropicKey){
-    status.textContent='Primero guarda tu API key de Anthropic en la pestaña IA ✦';
+    status.textContent='Necesitas una API key de Anthropic para calcular los macros automáticamente';
     status.style.color='var(--coral)';
     return;
   }
-  const btn=document.getElementById('af-ai-btn');
+
+  const btn=document.getElementById('af-add-btn');
   btn.disabled=true;
   status.textContent='Calculando macros con IA...';
   status.style.color='var(--muted)';
@@ -991,12 +712,20 @@ async function autocompleteMacros(){
     const match=raw.match(/\{[\s\S]*\}/);
     if(!match) throw new Error('No se pudo interpretar la respuesta de la IA');
     const parsed=JSON.parse(match[0]);
-    document.getElementById('f-kcal').value=Math.round(parsed.kcal)||0;
-    document.getElementById('f-prot').value=Math.round(parsed.prot)||0;
-    document.getElementById('f-carb').value=Math.round(parsed.carb)||0;
-    document.getElementById('f-lip').value=Math.round(parsed.lip)||0;
-    status.textContent='✓ Macros estimados — revisa y ajusta si hace falta antes de agregar';
-    status.style.color='var(--green)';
+    const item={
+      date:trackDateKey(),
+      name,
+      comida:comidaByHour(),
+      kcal:Math.round(parsed.kcal)||0,
+      prot:Math.round(parsed.prot)||0,
+      carb:Math.round(parsed.carb)||0,
+      lip:Math.round(parsed.lip)||0,
+    };
+    await apiFetch('/api/food',{method:'POST',body:JSON.stringify(item)});
+    nameInput.value='';
+    status.textContent='';
+    renderTracking();
+    if(trackDateKey()===todayDateKey()) renderMenu();
   }catch(e){
     status.textContent='Error: '+e.message;
     status.style.color='var(--coral)';
@@ -1062,7 +791,7 @@ async function renderTracking(){
   const empty=document.getElementById('log-empty');
   if(!isConfigured()){
     empty.style.display='block';
-    empty.textContent='Conecta tu backend en ⚙ para ver y registrar tus comidas';
+    empty.textContent='No se pudo conectar al backend';
     document.querySelectorAll('.food-log-item').forEach(el=>el.remove());
     return;
   }
@@ -1115,292 +844,10 @@ async function renderTracking(){
 }
 
 /* ══════════════════════════════════════
-   AGUA
-══════════════════════════════════════ */
-const META_AGUA=2000;
-let aguaLog=[];
-
-function getAguaDate(){return new Date().toISOString().split('T')[0]}
-
-async function loadAgua(){
-  if(!isConfigured()){aguaLog=[];renderAgua();return}
-  try{
-    aguaLog=await apiFetch('/api/water?date='+getAguaDate());
-  }catch(e){
-    aguaLog=[];
-    document.getElementById('agua-meta-display').textContent='Error al cargar: '+e.message;
-  }
-  renderAgua();
-}
-
-async function addAgua(ml){
-  if(!isConfigured()){alert('Conecta tu backend en ⚙ primero');return}
-  const hora=new Date().toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'});
-  try{
-    await apiFetch('/api/water',{method:'POST',body:JSON.stringify({date:getAguaDate(),ml,hora})});
-    await loadAgua();
-  }catch(e){alert('Error al guardar: '+e.message)}
-}
-
-function renderAgua(){
-  const total=Math.max(0,aguaLog.reduce((a,b)=>a+b.ml,0));
-  const pct=Math.min(1,total/META_AGUA);
-  document.getElementById('agua-total-display').textContent=total.toLocaleString('es-CL')+' ml';
-  document.getElementById('agua-meta-display').textContent=`de ${META_AGUA.toLocaleString('es-CL')} ml · ${Math.round(pct*100)}%`;
-  const fillHeight=180*pct;
-  const fillY=180-fillHeight;
-  document.getElementById('agua-fill').setAttribute('y',fillY);
-  document.getElementById('agua-fill').setAttribute('height',fillHeight);
-  const logEl=document.getElementById('agua-log');
-  const recientes=aguaLog.slice(-6).reverse();
-  logEl.innerHTML=recientes.length?recientes.map(e=>`
-    <div class="agua-log-item">
-      <span>${e.ml>0?'+':''}${e.ml} ml</span>
-      <span class="hora">${e.hora}</span>
-    </div>`).join(''):'<div style="font-size:12px;color:var(--faint);padding:8px 0">Sin registros hoy</div>';
-}
-
-let notifInterval=null;
-function pedirNotificaciones(){
-  if(!('Notification' in window)){alert('Tu navegador no soporta notificaciones');return}
-  Notification.requestPermission().then(perm=>{
-    if(perm==='granted'){
-      document.getElementById('notif-btn').textContent='🔔 Recordatorios activos (cada hora)';
-      document.getElementById('notif-btn').style.color='var(--green)';
-      if(notifInterval) clearInterval(notifInterval);
-      notifInterval=setInterval(()=>{
-        const total=aguaLog.reduce((a,b)=>a+b.ml,0);
-        if(total<META_AGUA){
-          new Notification('💧 Hidratación',{body:`Llevas ${total}ml de ${META_AGUA}ml. ¡Bebe agua!`,icon:''});
-        }
-      },3600000);
-      new Notification('💧 Recordatorios activados',{body:'Te avisaremos cada hora si no has alcanzado tu meta.'});
-    }
-  });
-}
-
-/* ══════════════════════════════════════
-   LISTA DE COMPRAS
-══════════════════════════════════════ */
-const LISTA=[
-  {cat:'Proteínas animales',items:[
-    {name:'Pechuga pollo deshuesada 550g',qty:'x3 bandejas'},
-    {name:'Carne molida vacuno 500g',qty:'x3 bandejas'},
-    {name:'Atún al agua lata 160g',qty:'x6 latas'},
-    {name:'Huevos blancos bandeja 30 und',qty:'x1'},
-    {name:'Jamón pavo laminado sobre 100g',qty:'x4 sobres'},
-  ]},
-  {cat:'Lácteos',items:[
-    {name:'Leche descremada UHT caja 1L',qty:'x6'},
-    {name:'Yogurt Skyr proteína 150g',qty:'x8'},
-  ]},
-  {cat:'Cereales y carbohidratos',items:[
-    {name:'Pan molde integral Kingsbury 580g',qty:'x4'},
-    {name:'Arroz integral grano largo 1kg',qty:'x2'},
-    {name:'Fideos espirales integrales 400g',qty:'x2'},
-    {name:'Avena Quaker tradicional 400g',qty:'x1'},
-    {name:'Papa blanca malla 1.5kg',qty:'x1'},
-  ]},
-  {cat:'Grasas saludables',items:[
-    {name:'Palta Hass granel ~1.5kg',qty:'~10 und'},
-    {name:'Aceite oliva extra virgen 500ml',qty:'x1'},
-    {name:'Mantequilla maní sin azúcar 450g',qty:'x1'},
-  ]},
-  {cat:'Frutas',items:[
-    {name:'Manzana bolsa 1kg',qty:'x2'},
-    {name:'Naranja malla 2kg',qty:'x2'},
-    {name:'Plátano granel ~1kg',qty:'~1kg'},
-  ]},
-  {cat:'Verduras',items:[
-    {name:'Tomate larga vida granel ~1kg',qty:'~1kg'},
-    {name:'Lechuga costina bolsa',qty:'x2'},
-    {name:'Porotos verdes bolsa 500g',qty:'x2'},
-    {name:'Choclo en granos lata 340g',qty:'x2'},
-    {name:'Lentejas bolsa 1kg',qty:'x1'},
-    {name:'Porotos blancos bolsa 500g',qty:'x1'},
-  ]},
-  {cat:'Suplementos',items:[
-    {name:'Creatina monohidrato polvo 300g',qty:'x1'},
-    {name:'Proteína Whey polvo 1kg',qty:'x1'},
-  ]},
-];
-
-async function renderLista(){
-  const c=document.getElementById('lista-container');
-  if(!isConfigured()){
-    c.innerHTML='<div style="padding:2rem;text-align:center;color:var(--faint);font-size:13px">Conecta tu backend en ⚙ para ver y marcar la lista</div>';
-    return;
-  }
-  let saved;
-  try{
-    saved=await apiFetch('/api/lista');
-  }catch(e){
-    c.innerHTML='<div style="padding:2rem;text-align:center;color:var(--coral);font-size:13px">Error al cargar: '+e.message+'</div>';
-    return;
-  }
-  c.innerHTML=LISTA.map(cat=>`
-    <div class="lista-sec">${cat.cat}</div>
-    <div class="lista-card">
-      ${cat.items.map(item=>`
-        <div class="lista-item ${saved[item.name]?'done':''}" onclick="toggleItem(this,'${item.name.replace(/'/g,"\\'")}')">
-          <div class="li-cb">${saved[item.name]?'✓':''}</div>
-          <span class="li-name">${item.name}</span>
-          <span class="li-qty">${item.qty}</span>
-        </div>`).join('')}
-    </div>`).join('');
-  updateListaCounter();
-}
-
-async function toggleItem(el,name){
-  el.classList.toggle('done');
-  const cb=el.querySelector('.li-cb');
-  const isDone=el.classList.contains('done');
-  cb.textContent=isDone?'✓':'';
-  updateListaCounter();
-  try{
-    await apiFetch('/api/lista/toggle',{method:'POST',body:JSON.stringify({name,done:isDone})});
-  }catch(e){
-    alert('Error al guardar: '+e.message);
-    el.classList.toggle('done');
-    cb.textContent=el.classList.contains('done')?'✓':'';
-    updateListaCounter();
-  }
-}
-
-function updateListaCounter(){
-  const total=document.querySelectorAll('.lista-item').length;
-  const done=document.querySelectorAll('.lista-item.done').length;
-  document.getElementById('lista-counter').textContent=`${done} de ${total} productos`;
-}
-
-async function resetLista(){
-  if(!isConfigured()) return;
-  try{
-    await apiFetch('/api/lista/reset',{method:'POST'});
-    renderLista();
-  }catch(e){alert('Error al limpiar: '+e.message)}
-}
-
-/* ══════════════════════════════════════
-   GENERADOR IA
-══════════════════════════════════════ */
-function saveApiKey(){
-  const key=document.getElementById('api-key-input').value.trim();
-  if(!key.startsWith('sk-ant')){
-    document.getElementById('api-key-status').textContent='La key debe empezar con sk-ant-...';
-    document.getElementById('api-key-status').style.color='var(--coral)';
-    return;
-  }
-  localStorage.setItem('anthropic_key',key);
-  document.getElementById('api-key-status').textContent='✓ API key guardada correctamente';
-  document.getElementById('api-key-status').style.color='var(--green)';
-  document.getElementById('api-key-input').value='••••••••••••••••';
-}
-
-async function generarMenu(){
-  const key=localStorage.getItem('anthropic_key');
-  if(!key){
-    document.getElementById('api-key-status').textContent='Primero guarda tu API key arriba';
-    document.getElementById('api-key-status').style.color='var(--coral)';
-    return;
-  }
-
-  const opts={
-    variado: document.getElementById('opt-variado').checked,
-    rapido:  document.getElementById('opt-rapido').checked,
-    lista:   document.getElementById('opt-lista').checked,
-    mealprep:document.getElementById('opt-mealprep').checked,
-    extra:   document.getElementById('gen-extra').value.trim(),
-  };
-
-  const prompt=`Eres un nutricionista deportivo. Genera un menú semanal personalizado para Luis Palma Guerrero con estas especificaciones:
-
-PAUTA NUTRICIONAL:
-- Objetivo: bajar de peso
-- Calorías: 1906 kcal/día
-- Proteínas: 162g/día
-- Carbohidratos: 195g/día
-- Lípidos: 54g/día
-
-DISTRIBUCIÓN DIARIA:
-- Desayuno (09:30): 1 cereal, 1 lácteo, 2 proteínas, 1 fruta
-- Colación AM (11:00): 1 lácteo
-- Almuerzo (14:00): 1 cereal, 4 proteínas, 1 verdura, ½ grasa
-- Colación PM (17:00): 1 cereal, 1 lácteo, 2 proteínas, ½ grasa (ideal batido whey)
-- Cena (21:00): 1 cereal, 3 proteínas, 1 verdura, ½ grasa
-
-${opts.lista?`INGREDIENTES DISPONIBLES (solo usar estos):
-Pechuga pollo, carne molida vacuno, atún al agua, huevos, jamón pavo, leche descremada, yogurt Skyr, pan molde integral Kingsbury, arroz integral, fideos espirales integrales, avena Quaker, papa blanca, palta Hass, aceite oliva, mantequilla maní, manzana, naranja, plátano, tomate, lechuga costina, porotos verdes, choclo en grano, lentejas, porotos blancos, proteína whey, creatina.`:''}
-${opts.rapido?'IMPORTANTE: Todas las preparaciones deben tomar menos de 20 minutos.':''}
-${opts.mealprep?'IMPORTANTE: Diseña el menú para que sea apto para meal prep dominical (cocinar todo el domingo para la semana).':''}
-${opts.variado?'IMPORTANTE: Maximiza la variedad, ningún almuerzo o cena debe repetirse durante la semana.':''}
-${opts.extra?`PREFERENCIAS ADICIONALES: ${opts.extra}`:''}
-
-Genera el menú para los 7 días (lunes a domingo). Para cada día incluye las 5 comidas con:
-- Nombre del plato
-- Ingredientes con cantidades
-- Preparación en 2-3 pasos máximo
-- Macros aproximados (P/C/G)
-
-Formato claro y práctico, en español chileno.`;
-
-  document.getElementById('gen-loading').classList.add('show');
-  document.getElementById('gen-result').style.display='none';
-
-  try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-6',
-        max_tokens:4000,
-        messages:[{role:'user',content:prompt}]
-      })
-    });
-
-    if(!res.ok){
-      const err=await res.json();
-      throw new Error(err.error?.message||'Error en la API');
-    }
-
-    const data=await res.json();
-    const text=data.content[0].text;
-
-    document.getElementById('gen-result-inner').textContent=text;
-    document.getElementById('gen-result').style.display='block';
-  } catch(e){
-    document.getElementById('gen-result-inner').textContent='Error: '+e.message+'\n\nVerifica que tu API key sea correcta y tengas créditos disponibles.';
-    document.getElementById('gen-result').style.display='block';
-  } finally{
-    document.getElementById('gen-loading').classList.remove('show');
-  }
-}
-
-function copiarMenu(){
-  const text=document.getElementById('gen-result-inner').textContent;
-  navigator.clipboard.writeText(text).then(()=>{
-    const btn=event.currentTarget;
-    btn.textContent='¡Copiado!';
-    setTimeout(()=>btn.textContent='Copiar menú',2000);
-  });
-}
-
-/* ══════════════════════════════════════
    INIT
 ══════════════════════════════════════ */
 renderMenu();
-loadConfigInputs();
 renderTracking();
-renderLista();
-loadAgua();
-
-// Cargar API key guardada
-const savedKey=localStorage.getItem('anthropic_key');
-if(savedKey){
-  document.getElementById('api-key-input').value='••••••••••••••••';
-  document.getElementById('api-key-status').textContent='✓ API key cargada';
-  document.getElementById('api-key-status').style.color='var(--green)';
-}
 </script>
 </body>
 </html>
